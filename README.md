@@ -1,1 +1,1 @@
-# boom_training_webapp
+# BOOM! Training WebApp
