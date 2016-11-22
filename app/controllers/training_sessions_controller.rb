@@ -14,7 +14,7 @@ class TrainingSessionsController < ApplicationController
 
   # GET /training_sessions/new
   def new
-    @training_session = TrainingSession.new
+    @training_session = TrainingSession.new params[:training_session] ? training_session_params : {}
   end
 
   # GET /training_sessions/1/edit
