@@ -6,20 +6,17 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link rel="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.0.1/fullcalendar.min.css">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.16.0/locale/bg.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.0.1/fullcalendar.min.js"></script>  
-    <script>
-      $(document).ready(function() {
-          $('#calendar').fullCalendar({
-          })
-      });
-    </script>  
-
   </head>
 
   <body>
+
+    <% if current_user %>
+      <p><%= link_to "Home Page", calendars_path %> <%= link_to "Sign out", destroy_user_session_path, method: :delete %> <%= link_to "Training Sessions", training_sessions_path %></p>
+    <% else %>
+      <p><%= link_to "Sign in", new_user_session_path %> <%= link_to "Sign up", new_user_registration_path %></p>
+    <% end %>
+
     <%= alert %>
     <%= yield %>
   </body>
