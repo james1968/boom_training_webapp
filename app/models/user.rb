@@ -5,6 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   def has_mobile_number?
-  	!self.mobile_number.empty?
+  	!self.mobile_number.nil?
   end
 end
