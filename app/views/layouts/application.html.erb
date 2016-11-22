@@ -20,6 +20,9 @@
   </head>
 
   <body>
+    <% if current_user %>
+      <%= link_to "Sign Out", destroy_user_session_path %>
+    <% end %>
     <%= alert %>
     <%= yield %>
   </body>

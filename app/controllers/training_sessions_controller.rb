@@ -30,6 +30,7 @@ class TrainingSessionsController < ApplicationController
       if @training_session.save
         format.html { redirect_to @training_session, notice: 'Training session was successfully created.' }
         format.json { render :show, status: :created, location: @training_session }
+        Text.new.send_text(current_user.mobile_number, "You have successfully created a training session for #{params[:name]} at #{params[:start_time]}") if current_user.has_mobile_number?
       else
         format.html { render :new }
         format.json { render json: @training_session.errors, status: :unprocessable_entity }
@@ -69,6 +70,6 @@ class TrainingSessionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def training_session_params
-      params.require(:training_session).permit(:name, :start_time)
+      params.require(:training_session).permit(:name, :start_time, :mobile_number)
     end
 end
