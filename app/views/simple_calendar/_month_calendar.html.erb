@@ -23,7 +23,9 @@
                 <% capture_haml(day, sorted_events.fetch(day, []), &block) %>
               <% else %>
                 <% block.call day, sorted_events.fetch(day, []) %>
-                <a href="training_sessions/new">Add Session</a>
+                <% if current_user %>
+                  <a href="training_sessions/new">Add Session <%= day %></a>
+                <% end %>
               <% end %>
             <% end %>
           <% end %>

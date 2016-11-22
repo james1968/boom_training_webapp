@@ -11,8 +11,8 @@
 
   <body>
 
-    <% if user_signed_in? %>
-      <p><%= link_to "Sign out", destroy_user_session_path, method: :delete %> <%= link_to "Training Sessions", training_sessions_path %></p>
+    <% if current_user %>
+      <p><%= link_to "Home Page", calendars_path %> <%= link_to "Sign out", destroy_user_session_path, method: :delete %> <%= link_to "Training Sessions", training_sessions_path %></p>
     <% else %>
       <p><%= link_to "Sign in", new_user_session_path %> <%= link_to "Sign up", new_user_registration_path %></p>
     <% end %>
