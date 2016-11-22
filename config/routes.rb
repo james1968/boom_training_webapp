@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   root "calendars#index"
 
   resources :calendars
+  resources :groups
 
 end
