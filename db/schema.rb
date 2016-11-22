@@ -18,8 +18,9 @@ ActiveRecord::Schema.define(version: 20161122102716) do
   create_table "training_sessions", force: :cascade do |t|
     t.string   "name"
     t.datetime "start_time"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "training_completed"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
   create_table "users", force: :cascade do |t|

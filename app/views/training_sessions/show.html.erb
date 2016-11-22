@@ -10,5 +10,10 @@
   <%= @training_session.start_time %>
 </p>
 
+<p>
+  <strong>Completed?</strong>
+  <%= @training_session.training_completed %>
+</p>
+
 <%= link_to 'Edit', edit_training_session_path(@training_session) %> |
 <%= link_to 'Back', training_sessions_path %>
