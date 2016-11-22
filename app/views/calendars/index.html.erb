@@ -1,2 +1,11 @@
-<div id='calendar'></div>
+<%= month_calendar events: @training_sessions do |date, training_sessions| %>
+	<%= date %>
 
+	<% training_sessions.each do |training| %>
+		<div>
+			<%= training.name %>
+		</div>
+	<% end %>
+<% end %>
+
+<%= link_to "Add a new training session", new_training_session_path %>
