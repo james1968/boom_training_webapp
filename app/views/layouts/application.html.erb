@@ -11,6 +11,7 @@
 
   <body>
 
+    <%= notice %>
 
     <% if current_user %>
       <p><%= link_to "Home Page", calendars_path %> <%= link_to "Sign out", destroy_user_session_path, method: :delete %> <%= link_to "Training Sessions", training_sessions_path %></p>
