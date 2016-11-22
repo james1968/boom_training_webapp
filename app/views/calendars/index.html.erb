@@ -3,11 +3,13 @@
 	<%= date %>
 	<% end %>
 
-	<% training_sessions.each do |training| %>
-		<div>
-			<%= training.name %>
-		</div>
-	<% end %>
+  <% if current_user %>
+  	<% training_sessions.each do |training| %>
+  		<div>
+  			<%= training.name %>
+  		</div>
+  	<% end %>
+  <% end %>
 <% end %>
 
 <%= link_to "Add a new training session", new_training_session_path %>
