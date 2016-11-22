@@ -1,5 +1,7 @@
 <%= month_calendar events: @training_sessions do |date, training_sessions| %>
+	<%= content_tag :div, class: "calendar-day", data: {date: date} do %>
 	<%= date %>
+	<% end %>
 
 	<% training_sessions.each do |training| %>
 		<div>
