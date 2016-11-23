@@ -1,6 +1,8 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: [:show, :edit, :update, :destroy]
 
+  before_action :authenticate_user!
+
   # GET /groups
   # GET /groups.json
   def index
@@ -14,7 +16,7 @@ class GroupsController < ApplicationController
 
   # GET /groups/new
   def new
-    @group = Group.new
+    @group = Group.new params[:group] ? group_params : {}
   end
 
   # GET /groups/1/edit
@@ -69,6 +71,6 @@ class GroupsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def group_params
-      params.require(:group).permit(:name, :members)
+      params.require(:group).permit(:name, :description)
     end
 end
