@@ -9,9 +9,11 @@ class Text
   end
 
   def send_text(recepient,body)
+    if recepient.present?
     message = @client.account.messages.create({
       body: body,
-      to:  recepient,  
+      to:  recepient,
       from:  "+441432233208"})
-  end 
+    end
+  end
 end
