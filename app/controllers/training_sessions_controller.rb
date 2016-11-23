@@ -31,11 +31,18 @@ class TrainingSessionsController < ApplicationController
         format.html { redirect_to @training_session, notice: 'Training session was successfully created.' }
         format.json { render :show, status: :created, location: @training_session }
         Text.new.send_text(current_user.mobile_number, "You have successfully created a training session for #{@training_session.name} on #{@training_session.start_time.strftime("%d of %B")} at #{@training_session.start_time.strftime("%H%M")}") if current_user.has_mobile_number?
+        redirect_to new_user_invitation
       else
         format.html { render :new }
         format.json { render json: @training_session.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def invite_user
+    @user = User.invite!(email)
+    render :json => @user
+    
   end
 
   # PATCH/PUT /training_sessions/1
