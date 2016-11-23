@@ -14,7 +14,12 @@
     <%= notice %>
 
     <% if current_user %>
-      <p><%= link_to "Home Page", calendars_path %> <%= link_to "Sign out", destroy_user_session_path, method: :delete %> <%= link_to "Training Sessions", training_sessions_path %></p>
+      <p>
+        <%= link_to "Home Page", calendars_path %> 
+        <%= link_to "Sign out", destroy_user_session_path, method: :delete %> 
+        <%= link_to "Training Sessions", training_sessions_path %>
+        <%= link_to "Add a friend", new_user_friend_request_path(current_user) %>    
+      </p>
     <% else %>
       <p><%= link_to "Sign in", new_user_session_path %> <%= link_to "Sign up", new_user_registration_path %></p>
     <% end %>

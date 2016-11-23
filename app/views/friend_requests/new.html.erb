@@ -1,0 +1,5 @@
+<%= form_for (@new_user_friend_request, :method => :post) do |f| %>
+	<%= f.label :recepient %>
+	<%= f.email :recepient %>
+	<%= f.submit %>
+<% end %>

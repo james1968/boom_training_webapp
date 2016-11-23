@@ -8,7 +8,10 @@ Rails.application.routes.draw do
       registrations: 'users/registrations'
     }
 
-
+   resources :users do
+  	resources :friends
+  	resources :friend_requests
+   end	
 
 
   resources :calendars
