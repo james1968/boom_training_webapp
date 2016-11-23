@@ -4,9 +4,9 @@ gem 'shoulda'
 gem 'omniauth-facebook'
 gem 'envyable'
 gem 'devise'
+gem 'devise_invitable'
 gem 'paperclip'
 gem 'simple_calendar', "~> 2.0"
-gem 'envyable'
 gem 'twilio-ruby'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
