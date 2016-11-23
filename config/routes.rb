@@ -12,5 +12,6 @@ Rails.application.routes.draw do
 
 
   resources :calendars
+  resources :groups
 
 end
