@@ -2,6 +2,7 @@ require 'rubygems'
 require 'twilio-ruby'
 
 class Text
+
   def initialize
     @account_sid = Rails.application.secrets.TWILIO_ACCOUNT_SID
     @auth_token = Rails.application.secrets.TWILIO_AUTH_TOKEN
