@@ -8,6 +8,7 @@ class GroupsController < ApplicationController
   end
 
   def show
+    @group = set_group
   end
 
   def new
