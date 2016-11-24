@@ -1,28 +1,22 @@
 class TrainingSessionsController < ApplicationController
-  before_action :set_training_session, only: [:show, :edit, :update, :destroy]
 
-  # GET /training_sessions
-  # GET /training_sessions.json
+  before_action :set_training_session, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, :except => [:index, :show]
+
   def index
     @training_sessions = TrainingSession.all
   end
 
-  # GET /training_sessions/1
-  # GET /training_sessions/1.json
   def show
   end
 
-  # GET /training_sessions/new
   def new
     @training_session = TrainingSession.new params[:training_session] ? training_session_params : {}
   end
 
-  # GET /training_sessions/1/edit
   def edit
   end
 
-  # POST /training_sessions
-  # POST /training_sessions.json
   def create
     @training_session = TrainingSession.new(training_session_params)
 
@@ -38,8 +32,6 @@ class TrainingSessionsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /training_sessions/1
-  # PATCH/PUT /training_sessions/1.json
   def update
     respond_to do |format|
       if @training_session.update(training_session_params)
@@ -52,8 +44,6 @@ class TrainingSessionsController < ApplicationController
     end
   end
 
-  # DELETE /training_sessions/1
-  # DELETE /training_sessions/1.json
   def destroy
     @training_session.destroy
     respond_to do |format|
@@ -63,12 +53,11 @@ class TrainingSessionsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_training_session
       @training_session = TrainingSession.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def training_session_params
       params.require(:training_session).permit(:name, :start_time, :mobile_number, :training_completed)
     end
