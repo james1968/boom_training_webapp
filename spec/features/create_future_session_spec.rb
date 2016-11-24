@@ -8,7 +8,7 @@ require 'rails_helper'
       expect(page).to have_content "Training Sessions"
       click_link "Training Sessions"
       click_link 'New Training Session'
-      select '26', from: "training_session_start_time_3i"
+      select "2017", from: "training_session_start_time_1i"
       click_button 'Create Training session'
       expect(page).to have_content ('Training session was successfully created.')
     end
