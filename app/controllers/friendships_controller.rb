@@ -15,6 +15,10 @@ class FriendshipsController < ApplicationController
 		end
 	end
 
+	def show
+		@friendship = Friendship.find(params[:id])
+	end
+
 	def friendship_params
 		params.require(:friendship).permit(:email)
 	end
