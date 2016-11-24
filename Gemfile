@@ -9,6 +9,10 @@ gem 'simple_calendar', "~> 2.0"
 gem 'twilio-ruby'
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
+gem 'devise-bootstrap-views'
+
+
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
