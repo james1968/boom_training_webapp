@@ -1,0 +1,5 @@
+<%= form_for(@friendship, url: user_friendships_path(current_user), method: :post) do |f| %>
+	<%= f.label :email %>
+	<%= f.email_field :second_user_id %>
+	<%= f.submit "Add Friend" %>
+<% end %>
