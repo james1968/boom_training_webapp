@@ -14,7 +14,7 @@ feature 'add a friend' do
     expect(page).to have_content 'Friend added'
   end
 
-  scenario 'as a user I want to be able to add another users as a friend' do
+  scenario 'a valid email must be used to create a friend' do
     sign_up_one
     expect(page).to have_content "Training Sessions"
     click_link 'Sign out'
