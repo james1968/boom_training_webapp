@@ -1,6 +1,11 @@
 // Place all the styles related to the calendars controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.calendar-container {
+  width: 80%;
+  margin: auto;
+}
+
 .simple-calendar {
   table {
     -webkit-border-horizontal-spacing: 0px;
@@ -78,4 +83,9 @@
   .current-month {}
 
   .has-events {}
+
+  .completed-training-session, .failed-training-session {
+    width:20%;
+
+  }
 }

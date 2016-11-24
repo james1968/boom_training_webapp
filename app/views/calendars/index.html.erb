@@ -1,13 +1,21 @@
+<div class="calendar-container">
 <%= month_calendar events: @training_sessions do |date, training_sessions| %>
-	<%= content_tag :div, class: "calendar-day", data: {date: date} do %>
-	<%= date %>
-	<% end %>
 
-  <% if current_user %>
-  	<% training_sessions.each do |training| %>
-  		<div>
-  			<%= training.name %>
-  		</div>
-  	<% end %>
-  <% end %>
+    <%= content_tag :div, class: "calendar-day", data: {date: date} do %>
+     <%= date %>
+    <% end %>
+
+    <% if current_user %>
+      <% training_sessions.each do |training| %>
+        <% if training.training_completed == "Hells YEAH" %>
+          <%= image_tag('green-tick.png', class: "completed-training-session" ) %>
+        <% elsif training.training_completed == "Didn't do it" %>
+          <%= image_tag('red-cross.png', class: "failed-training-session" ) %>
+          <div>
+            <%= training.name %>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
 <% end %>
+</div>
