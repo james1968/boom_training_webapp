@@ -9,54 +9,69 @@
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
   </head>
 
-  <body>  
+  <body>
     <div data-turbolinks="false">
 
         <!--Navigation-->
-    <nav class="navbar navbar-default navbar-static-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">BOOM!</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="/spaces">Home</a></li>
-            <li><a href="https://github.com/alexanderwjrussell/boom_training_webapp">About</a></li>
-            <li><a href="/spaces">Spaces</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <% if !current_user %>
+      <nav class="navbar navbar-default navbar-static-top">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">BOOM!</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="https://github.com/alexanderwjrussell/boom_training_webapp">About</a></li>
+
+
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Training Sessions <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="/training_sessions">Your Training Sessions</a></li>
+                  <li><a href="/training_sessions/new">Create New Training Session</a></li>
+                </ul>
+              </li>
+
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Groups <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="/groups">Your Groups</a></li>
+                  <li><a href="/groups/new">Create New Group</a></li>
+                </ul>
+              </li>
+
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Friends <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="/friends">Your Friends</a></li>
+                  <li><a href="/friends/new">Add New Friend</a></li>
+                </ul>
+              </li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+              <% if !current_user %>
+              <a class="navbar-text navbar-left"><%= notice %></a>
               <a href="/users/sign_in" class="btn btn-primary navbar-btn" role="button">Sign In</a>
               <a href="/users/sign_up" class="btn btn-default navbar-btn" role="button">Sign Up</a>
-            <% else %>
-              <p class="navbar-text navbar-left">Welcome</p>
-              <a class="btn btn-primary navbar-btn"><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></a>
+              <% else %>
+              <p class="navbar-text navbar-left"><%= notice %></p>
+              <a><%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-primary navbar-btn" %></a>
               <a href="/requests" class="btn btn-primary navbar-btn" role="button">Requests</a>
-            <% end %>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+              <% end %>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
 
-    <%= notice %>
+      <%= alert %>
+      <%= yield %>
 
-    <% if current_user %>
-      <p><%= link_to "Home Page", calendars_path %> <%= link_to "Sign out", destroy_user_session_path, method: :delete %> <%= link_to "Training Sessions", training_sessions_path %></p>
-    <% else %>
-      <p><%= link_to "Sign in", new_user_session_path %> <%= link_to "Sign up", new_user_registration_path %></p>
-    <% end %>
-
-    <%= alert %>
-    <%= yield %>
-      <% if current_user %>
-        <p><%= link_to "Create New Group", new_group_path %> <%= link_to "View Groups", groups_path %></p>
-      <% end %>
     </div>
   </body>
 </html>
