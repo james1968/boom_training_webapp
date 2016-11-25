@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :training_sessions
+  
+  resources :training_sessions do
+    resources :reviews
+  end
 
   root "calendars#index"
 
@@ -14,8 +17,8 @@ Rails.application.routes.draw do
 
   resources :calendars
   resources :groups
-    
+
   get 'groups/add_member' => 'groups#add_member'
-  
+
 
 end
