@@ -5,6 +5,7 @@ class TrainingSessionsController < ApplicationController
 
   def index
     @training_sessions = TrainingSession.all
+    @reviews = Review.all
   end
 
   def show
