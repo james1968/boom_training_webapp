@@ -17,12 +17,8 @@
 
       <%= link_to 'Edit', edit_group_path(@group) %>
 
-      <%= form_for(@group, url: groups_add_member_path) do |f| %>
-        <%= hidden_field_tag 'id', @group.id %>
-        <%= f.label :users %>
-        <%= f.email_field :users %>
-        <%= f.submit "Join" %>
-      <% end %>
+      <%= link_to 'Join', join_group_path(@group) %>
+
 
     </div>
     <div class="col-lg-4"></div>

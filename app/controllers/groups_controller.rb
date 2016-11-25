@@ -18,6 +18,18 @@ class GroupsController < ApplicationController
   def edit
   end
 
+  def join_group
+    @group = Group.find(params[:id])
+    render 'join'
+  end
+
+  def join_group_update
+    @group = Group.find(params[:id])
+    # @user = @group.users.create(group_params)
+    # @user.save
+    redirect_to '/'
+  end
+
   def create
     @group = Group.new(group_params)
 
@@ -59,6 +71,6 @@ class GroupsController < ApplicationController
     end
 
     def group_params
-      params.require(:group).permit(:name, :description)
+      params.require(:group).permit(:name, :description, :user_id)
     end
 end
