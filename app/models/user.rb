@@ -13,7 +13,7 @@ class User < ApplicationRecord
 	has_many :friend_twos, through: :friendship_twos, source: :second_user
   has_many :groups
 
-  has_attached_file :image, styles: { small: "64x64", med: "100x100", large: "200x200" }
+  has_attached_file :image, styles: { small: "64x64", med: "100x100", large: "400x400" }
     validates_attachment_content_type :image, :content_type => ['image/jpg', 'image/png']
 
   #has_many :friends, through: :friendships, source: :second_user
