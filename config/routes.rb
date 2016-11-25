@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   resources :training_sessions do
     resources :reviews
   end
@@ -19,6 +19,9 @@ Rails.application.routes.draw do
   resources :groups
 
   get 'groups/add_member' => 'groups#add_member'
+
+  get 'users/:id' => 'users#show'
+
 
 
 end
