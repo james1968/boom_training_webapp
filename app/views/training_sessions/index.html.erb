@@ -23,9 +23,9 @@
                 <td><%= training_session.start_time %></td>
                 <td><%= training_session.training_completed %></td>
                 <td>
-                  <% @reviews.each do |review| %>
+                  <% training_session.reviews.each do |review| %>
                     <div class="reviews">
-                      <p>"<%= review.completed %>"</p>
+                      <p><%= review.completed %></p>
                       <p><%= review.rating %> / 5</p>
                     </div>
                   <% end %>

@@ -6,10 +6,10 @@ Rails.application.routes.draw do
 
   root "calendars#index"
 
-    devise_for :users, controllers: {
-      sessions: 'users/sessions',
-      registrations: 'users/registrations'
-    }
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
+  }
 
   resources :users do
   	resources :friendships
