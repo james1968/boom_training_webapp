@@ -5,4 +5,8 @@ class TrainingSession < ApplicationRecord
   has_many :reviews,
     -> { extending WithUserAssociationExtension },
     dependent: :destroy
+
+  def average_rating
+    reviews.average(:rating)
+  end
 end

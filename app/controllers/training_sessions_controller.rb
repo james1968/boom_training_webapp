@@ -4,8 +4,7 @@ class TrainingSessionsController < ApplicationController
   before_action :authenticate_user!, :except => [:index, :show]
 
   def index
-    @training_sessions = TrainingSession.all
-    @reviews = Review.all
+    @training_sessions = TrainingSession.includes(:reviews).all
   end
 
   def show
