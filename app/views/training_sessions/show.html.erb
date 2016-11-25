@@ -1,19 +1,30 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
 
-<p>
-  <strong>Name:</strong>
-  <%= @training_session.name %>
-</p>
+      <h4 id="notice"><%= notice %></h4>
 
-<p>
-  <strong>Start time:</strong>
-  <%= @training_session.start_time %>
-</p>
+      <h1>Your Training Session</h1>
 
-<p>
-  <strong>Completed?</strong>
-  <%= @training_session.training_completed %>
-</p>
+      <h4>
+        <strong>Name:</strong>
+        <%= @training_session.name %>
+      </h4>
 
-<%= link_to 'Edit', edit_training_session_path(@training_session) %> |
-<%= link_to 'Back', training_sessions_path %>
+      <h4>
+        <strong>Start time:</strong>
+        <%= @training_session.start_time %>
+      </h4>
+
+      <h4>
+        <strong>Completed?</strong>
+        <%= @training_session.training_completed %>
+      </h4>
+
+      <%= link_to 'Edit', edit_training_session_path(@training_session) %>
+
+    </div>
+    <div class="col-lg-4"></div>
+  </div>
+</div>
