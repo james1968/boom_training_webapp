@@ -25,7 +25,7 @@ feature 'groups' do
       visit '/groups'
       click_link('Edit')
       fill_in 'Description', with: "2nd rule. You do not talk about fight club!"
-      click_button('Update Group')
+      click_button('Create Group')
       expect(page).to have_content "2nd rule. You do not talk about fight club!"
     end
 
