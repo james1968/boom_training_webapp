@@ -8,12 +8,12 @@
       <% training_sessions.each do |training| %>
         <% if training.training_completed == "Hells YEAH" %>
           <div>
-            <%= training.name %>
+            <%= link_to "#{training.name}", training %>
           </div>
           <%= image_tag('green-tick.png', class: "completed-training-session" ) %>
         <% else %>
           <div>
-            <%= training.name %>
+            <%= link_to "#{training.name}", training %>
           </div>
           <%= image_tag('red-cross.png', class: "failed-training-session" ) %>
         <% end %>
