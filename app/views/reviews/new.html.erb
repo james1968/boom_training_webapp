@@ -1,0 +1,15 @@
+<div class="container-fluid">
+ <div class="row">
+   <div class="col-lg-4"></div>
+   <div class="col-lg-4">
+      <%= form_for [@training_session, @review] do |f| %>
+        <%= f.label :completed %>
+        <%= f.select :completed, ["Not yet bud", "Hells YEAH", "Didn't do it"] %>
+        <%= f.label :rating %>
+        <%= f.select :rating, (1..5) %>
+        <%= f.submit 'Leave Review' %>
+      <% end %>
+    </div>
+    <div class="col-lg-4"></div>
+  </div>
+</div>
