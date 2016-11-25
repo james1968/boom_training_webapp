@@ -18,7 +18,7 @@ class TrainingSessionsController < ApplicationController
   end
 
   def create
-    @training_session = TrainingSession.new(training_session_params)
+    @training_session = current_user.training_sessions.build(training_session_params)
 
     respond_to do |format|
       if @training_session.save
