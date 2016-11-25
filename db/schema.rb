@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20161125110711) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +25,16 @@ ActiveRecord::Schema.define(version: 20161125110711) do
     t.index ["first_user_id", "second_user_id"], name: "index_friendships_on_first_user_id_and_second_user_id", unique: true, using: :btree
     t.index ["first_user_id"], name: "index_friendships_on_first_user_id", using: :btree
     t.index ["second_user_id"], name: "index_friendships_on_second_user_id", using: :btree
+  end
+
+  create_table "group_invites", force: :cascade do |t|
+    t.string   "group_name"
+    t.string   "user_email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_name", "user_email"], name: "index_group_invites_on_group_name_and_user_email", unique: true, using: :btree
+    t.index ["group_name"], name: "index_group_invites_on_group_name", using: :btree
+    t.index ["user_email"], name: "index_group_invites_on_user_email", using: :btree
   end
 
   create_table "groups", force: :cascade do |t|

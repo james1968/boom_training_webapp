@@ -52,6 +52,7 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Friends <b class="caret"></b></a>
                 <ul class="dropdown-menu">
+                  <li><a href='<%= "#{user_friendships_path(current_user)}" %>'>Your Friends</a></li>
                   <li><a href="/users/:user_id/friendships/new">Add New Friend</a></li>
                 </ul>
               </li>
@@ -69,16 +70,35 @@
               <% end %>
             </ul>
           </div><!--/.nav-collapse -->
+
+          
         </div>
       </nav>
 
-      <%= alert %>
-      <%= yield %>
+      <div class="container">
+        <% if current_user %>
+          <button id="signed-in-user" type ="button" class="btn btn-default btn-xs pull-right">
+            <% if current_user.image %>
+              <%= link_to image_tag(current_user.image.url(:small)), current_user.image.url %>
+            <% else %>
+              <span class = "glyphicon glyphicon-user"></span>
+            <% end %>
+            <%= current_user.email %>
+            <ul class="dropdown-menu">
+              <li class="dropdown"><a href='<%= "#{user_path(current_user)}" %>'>View Profile</a></li>
+              <li class="dropdown"><a href='<%= "users/password/edit" %>'>Edit Password</a></li>
+              <li class="dropdown"><a href='<%= "/users/edit" %>'> Edit Profile</a></li>
+            </ul>
+          </button>
+         <% end %>
+        <%= alert %>
+        <%= yield %>
+      </div>
 
     </div>
 
     <footer class="footer">
-      <div class="container">
+      <div class="container text-center">
         <span class="text-muted"> Designed and developed by Team Boom! </span>
       </div>
     </footer>
