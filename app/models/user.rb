@@ -6,12 +6,14 @@ class User < ApplicationRecord
   has_many :friendships, class_name: "Friendship",
   											 foreign_key: "first_user_id",
   											 dependent: :destroy
-  
+
   has_many :friendship_ones, :class_name => 'Friendship', :foreign_key => :second_user_id
 	has_many :friend_ones, through: :friendship_ones, source: :first_user
 	has_many :friendship_twos, :class_name => 'Friendship', :foreign_key => :first_user_id
 	has_many :friend_twos, through: :friendship_twos, source: :second_user
   has_many :groups
+
+  has_attached_file :image, styles: { small: "64x64", med: "100x100", large: "200x200" }
 
   #has_many :friends, through: :friendships, source: :second_user
 

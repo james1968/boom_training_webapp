@@ -23,6 +23,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     params.require(:user).permit(:email, :password, :password_confirmation, :mobile_number)
   end
 
+  def account_update_params
+    params.require(:user).permit(:email, :current_password, :password, :password_confirmation, :mobile_number, :image, :username, :postcode)
+  end
+
 
   # GET /resource/sign_up
   # def new
