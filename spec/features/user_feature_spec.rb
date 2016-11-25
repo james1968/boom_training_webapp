@@ -35,4 +35,26 @@ feature "User can sign in and out" do
       expect(page).not_to have_button('Sign Up')
     end
   end
+
+  feature "User can join a group" do
+    it "should see button to join group in Group page" do
+    sign_up_one
+    expect(page).to have_content "Training Sessions"
+    create_new_group
+    expect(page).to have_content 'Group was successfully created'
+    click_link 'Sign Out'
+    sign_up_two
+    click_link('Your Groups')
+    click_link('Show')
+    click_button('Join')
+    fill_in('Email', with: 'riddler@hotmail.com')
+    expect(page).to have_content('You\'ve joined Fight Club')
+    end
+  end
+
+
+
+
+
+
 end

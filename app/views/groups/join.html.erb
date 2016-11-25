@@ -1,0 +1,19 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
+      <h1>Joining Groups</h1>
+    </div>
+    <div class="col-lg-4"></div>
+  </div>
+</div>
+
+<%= form_for(@group, url: join_update_path, method: :post) do |f| %>
+<%= hidden_field_tag 'id', @group.id %>
+<%= f.label :members %>
+<%= f.email_field :members %>
+<%= f.submit "Join" %>
+<% end %>
+
+<%= link_to 'Show', @group %> |
+<%= link_to 'Back', groups_path %>
