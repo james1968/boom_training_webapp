@@ -1,4 +1,4 @@
-<div class="calendar-container">
+
   <%= month_calendar events: @training_sessions do |date, training_sessions| %>
 
     <%= content_tag :div, class: "calendar-day", data: {date: date} do %>
@@ -20,4 +20,3 @@
       <% end %>
     <% end %>
   <% end %>
-</div>

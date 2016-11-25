@@ -7,4 +7,7 @@
 	<h1><%= @user.username ? "Username: #{@user.username}" : "Email: #{@user.email}" %></h1>
 	<h2><%= @user.username ? "Email: #{@user.email}" : nil %></h2>
 	<h3>Postcode: <%= @user.postcode if @user.postcode? %></h3>
+	<h4>Successful Sessions: <%= @successful_sessions_count %></h4>
+	<h4>Failed Sessions: <%= @failed_sessions_count %></h4>
+	<h4>Success Rate: <%= @success_rate %>%</h4>
 </div>
