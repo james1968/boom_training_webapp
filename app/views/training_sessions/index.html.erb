@@ -4,30 +4,31 @@
     <div class="col-lg-4"></div>
     <div class="col-lg-4">
       <h1>Training Sessions</h1>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Start time</th>
-            <th>Completed?</th>
-            <th colspan="3"></th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <% @training_sessions.each do |training_session| %>
+      <div class="table=responsive">
+        <table class="table">
+          <thead>
             <tr>
-              <td><%= training_session.name %></td>
-              <td><%= training_session.start_time %></td>
-              <td><%= training_session.training_completed %></td>
-              <td><%= link_to 'Show', training_session %></td>
-              <td><%= link_to 'Edit', edit_training_session_path(training_session) %></td>
-              <td><%= link_to 'Destroy', training_session, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <th>Name</th>
+              <th>Start time</th>
+              <th>Completed?</th>
+              <th colspan="3"></th>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
+          </thead>
+
+          <tbody>
+            <% @training_sessions.each do |training_session| %>
+              <tr>
+                <td><%= training_session.name %></td>
+                <td><%= training_session.start_time %></td>
+                <td><%= training_session.training_completed %></td>
+                <td><%= link_to 'Show', training_session %></td>
+                <td><%= link_to 'Edit', edit_training_session_path(training_session) %></td>
+                <td><%= link_to 'Destroy', training_session, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
     <div class="col-lg-4"></div>
   </div>
