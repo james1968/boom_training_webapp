@@ -1,21 +1,30 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
 
-<p>
-  <strong>Group Name:</strong>
-  <%= @group.name %>
-</p>
+      <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @group.description %>
-</p>
+      <p>
+        <strong>Group Name:</strong>
+        <%= @group.name %>
+      </p>
 
-<%= form_for(@group, url: groups_add_member_path) do |f| %>
-	<%= hidden_field_tag 'id', @group.id %>
-	<%= f.label :users %>
-	<%= f.email_field :users %>
-	<%= f.submit "Invite friend" %>
-<% end %>
+      <p>
+        <strong>Description:</strong>
+        <%= @group.description %>
+      </p>
 
-<%= link_to 'Edit', edit_group_path(@group) %> 
-<%= link_to 'Back', groups_path %>
+      <%= form_for(@group, url: groups_add_member_path) do |f| %>
+      	<%= hidden_field_tag 'id', @group.id %>
+      	<%= f.label :users %>
+      	<%= f.email_field :users %>
+      	<%= f.submit "Invite friend" %>
+      <% end %>
+
+      <%= link_to 'Edit', edit_group_path(@group) %>
+
+    </div>
+    <div class="col-lg-4"></div>
+  </div>
+</div>
