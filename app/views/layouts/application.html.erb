@@ -70,6 +70,14 @@
               <% end %>
             </ul>
           </div><!--/.nav-collapse -->
+
+          <% if current_user %>
+            <button type ="button" class="btn btn-default btn-xs pull-right">
+              <span class = "glyphicon glyphicon-user"></span>
+              <%= current_user.email %>
+            </button>
+          <% end %>
+          
         </div>
       </nav>
 

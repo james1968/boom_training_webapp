@@ -1,5 +1,9 @@
 <div class="container">
-	<%= link_to image_tag(@user.image.url(:large)), @user.image.url %>
+	<% if @user.image %>
+		<%= link_to image_tag(@user.image.url(:large)), @user.image.url %>
+	<% else %>
+		<div class = "glyphicon glyphicon-user" width="400" height="400"></div>
+	<% end %>
 	<h1><%= @user.username ? "Username: #{@user.username}" : "Email: #{@user.email}" %></h1>
 	<h2><%= @user.username ? "Email: #{@user.email}" : nil %></h2>
 	<h3>Postcode: <%= @user.postcode if @user.postcode? %></h3>
