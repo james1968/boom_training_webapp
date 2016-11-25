@@ -7,7 +7,8 @@ feature 'add a friend' do
     click_link 'Sign Out'
     sign_up_two
     expect(page).to have_content "Training Sessions"
-    click_link "Add a friend"
+    click_link ('Friends')
+    click_link ('Add New Friend')
     fill_in :friendship_second_user_id, with: 'batman@hotmail.com'
     click_button 'Add Friend'
     expect(current_path).to eq root_path
@@ -20,7 +21,8 @@ feature 'add a friend' do
     click_link 'Sign Out'
     sign_up_two
     expect(page).to have_content "Training Sessions"
-    click_link "Add a friend"
+    click_link ('Friends')
+    click_link ('Add New Friend')
     click_button 'Add Friend'
     expect(current_path).to eq root_path
     expect(page).to have_content 'Unable to create friendship'
