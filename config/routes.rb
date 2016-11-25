@@ -14,8 +14,9 @@ Rails.application.routes.draw do
 
   resources :calendars
   resources :groups
-    
+
   get 'groups/add_member' => 'groups#add_member'
-  
+  get 'users/:id' => 'users#show'
+
 
 end
