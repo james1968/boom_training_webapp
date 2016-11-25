@@ -22,8 +22,8 @@
         <%= @training_session.training_completed %>
       </h4>
 
-      <p><%= link_to 'Edit', edit_training_session_path(@training_session) %></p>
-      <p><%= link_to "Review Session", new_training_session_review_path(@training_session) %></p>
+      <p><%= link_to 'Edit', edit_training_session_path(@training_session), class: "btn btn-secondary"  %></p>
+      <p><%= link_to "Review Session", new_training_session_review_path(@training_session), class: "btn btn-secondary" %></p>
 
     </div>
     <div class="col-lg-4"></div>
