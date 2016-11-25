@@ -71,7 +71,7 @@
             </ul>
           </div><!--/.nav-collapse -->
 
-          
+
         </div>
       </nav>
 
@@ -79,7 +79,7 @@
         <% if current_user %>
           <button id="signed-in-user" type ="button" class="btn btn-default btn-xs pull-right">
             <% if current_user.image %>
-              <%= link_to image_tag(current_user.image.url(:small)), current_user.image.url %>
+              <%= link_to image_tag(current_user.image.url(:small), class: "signed_in_image"), current_user.image.url %>
             <% else %>
               <span class = "glyphicon glyphicon-user"></span>
             <% end %>
