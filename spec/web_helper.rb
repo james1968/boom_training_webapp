@@ -1,6 +1,6 @@
 def sign_in
   visit('/')
-  click_link('Sign in')
+  click_link('Sign In')
   fill_in('Email', with: 'test@example.com')
   fill_in('Password', with: 'testtest')
   click_button('Sign in')
@@ -8,7 +8,7 @@ end
 
 def sign_up
   visit('/')
-  click_link('Sign up')
+  click_link('Sign Up')
   fill_in('Email', with: 'test@example.com')
   fill_in('Password', with: 'testtest')
   fill_in('Password confirmation', with: 'testtest')
@@ -17,7 +17,7 @@ end
 
 def sign_out
   visit('/')
-  click_link('Sign out')
+  click_link('Sign Out')
 end
 
 def create_new_group
