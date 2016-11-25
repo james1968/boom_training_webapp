@@ -25,9 +25,16 @@ class GroupsController < ApplicationController
 
   def join_group_update
     @group = Group.find(params[:id])
-    # @user = @group.users.create(group_params)
-    # @user.save
-    redirect_to '/'
+    @group.update(group_params)
+    respond_to do |format|
+      if @group.save
+        format.html { redirect_to @group, notice: 'User successfully added to group' }
+        format.json { render :show, status: :created, location: @group }
+      else
+        format.html { render :new }
+        format.json { render json: @group.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def create
@@ -71,6 +78,6 @@ class GroupsController < ApplicationController
     end
 
     def group_params
-      params.require(:group).permit(:name, :description, :user_id)
+      params.require(:group).permit(:name, :description, :members)
     end
 end
