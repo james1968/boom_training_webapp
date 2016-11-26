@@ -10,8 +10,8 @@
 
 <%= form_for(@group, url: join_update_path, method: :post) do |f| %>
 <%= hidden_field_tag 'id', @group.id %>
-<%= f.label :members %>
-<%= f.email_field :members %>
+<%= f.label :user_email %>
+<%= f.email_field :user_email %>
 <%= f.submit "Join" %>
 <% end %>
 
