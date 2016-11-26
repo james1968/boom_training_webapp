@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20161126133830) do
 
   # These are extensions that must be enabled in order to support this database
@@ -41,8 +40,6 @@ ActiveRecord::Schema.define(version: 20161126133830) do
     t.index ["group_id", "user_id"], name: "index_memberships_on_group_id_and_user_id", unique: true, using: :btree
     t.index ["group_id"], name: "index_memberships_on_group_id", using: :btree
     t.index ["user_id"], name: "index_memberships_on_user_id", using: :btree
-    t.text     "user_email"
-
   end
 
   create_table "reviews", force: :cascade do |t|

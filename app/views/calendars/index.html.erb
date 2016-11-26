@@ -10,25 +10,24 @@
     <%= month_calendar events: @training_sessions  do |date, training_sessions| %>
 
       <%= content_tag :div, class: "calendar-day", data: {date: date} do %>
-       <%= date %>
+       <%= date.strftime("%d") %>
       <% end %>
       <% if current_user %>
         <% training_sessions.each do |training| %>
+          <div>
+            <%= link_to "#{training.name}", edit_user_training_session_path(@user,training) %>
+          </div>
           <% if training.training_completed == "Hells YEAH" %>
-            <div>
-              <%= link_to "#{training.name}", training %>
-            </div>
             <%= image_tag('green-tick.png', class: "completed-training-session" ) %>
-          <% else %>
-            <div>
-              <%= link_to "#{training.name}", training %>
-            </div>
+          <% elsif training.training_completed == "Didn't do it" %>
             <%= image_tag('red-cross.png', class: "failed-training-session" ) %>
           <% end %>
         <% end %>
       <% end %>
     <% end %>
   <% else %>
-    <h1>Welcome to Boom Training</h1>
-    <h2>Please Sign in or Sign up</h2>
+    <div class="row text-center">
+      <h1>Welcome to Boom Training</h1>
+      <h2>Please Sign in or Sign up</h2>
+    </div>
   <% end %>

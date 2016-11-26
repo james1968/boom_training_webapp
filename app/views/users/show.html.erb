@@ -1,19 +1,29 @@
 <div class="container">
-	<% if @user.image %>
+	<% if @user.has_image_file? %>
 		<%= link_to image_tag(@user.image.url(:large)), @user.image.url %>
-	<% else %>
-		<div class = "glyphicon glyphicon-user" width="400" height="400"></div>
 	<% end %>
-	<h1><%= @user.username ? "Username: #{@user.username}" : "Email: #{@user.email}" %></h1>
-	<h2><%= @user.username ? "Email: #{@user.email}" : nil %></h2>
-	<h3>Postcode: <%= @user.postcode if @user.postcode? %></h3>
-
-	<h3>Average User Rating: <%= @training_session.average_rating.to_i %> / 5 </h3>
-
-	<h4>Successful Sessions: <%= @successful_sessions_count %></h4>
+	<h1><%= "Username #{@user.username}" if @user.username %></h1>
+	<h2><%= "Email: #{@user.email}" %></h2>
+	<h3>Postcode: <%= @user.postcode %></h3>
+	
+	<h4>Successful Sessions: <%= @completed_sessions_count %></h4>
 	<h4>Failed Sessions: <%= @failed_sessions_count %></h4>
 	<h4>Success Rate: <%= @success_rate %>%</h4>
 
+	<h4><%= @user.email %>'s friends</h4>
+	<% @user.friends.each do |friend| %>
+		<p><%= link_to "#{friend.email}", user_path(friend) %></p>
+	<% end %>
 
+
+	<h4><%= @user.email %>'s training sessions</h4>
+		<% @user.training_sessions.each do |training_session| %>
+		<p><%= link_to "#{training_session.name}", training_session_path(training_session) %></p>
+	<% end %>
+
+	<h4><%= @user.email %>'s groups</h4>
+	<% @user.groups.each do | group | %>
+		<p><%= link_to "#{group.name}",group_path(group) %></p>
+	<% end %>
 
 </div>

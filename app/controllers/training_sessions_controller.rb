@@ -4,7 +4,7 @@ class TrainingSessionsController < ApplicationController
   before_action :authenticate_user!, :except => [:index, :show]
 
   def index
-    @training_sessions = TrainingSession.includes(:reviews).all
+    @training_sessions = TrainingSession.all
   end
 
   def show
@@ -15,31 +15,30 @@ class TrainingSessionsController < ApplicationController
   end
 
   def edit
+    @training_session = current_user.training_sessions.where(id: params[:id]).first
   end
 
   def join_session
     training_session = TrainingSession.find(params[:id])
-    if !current_user.belongs_to_training_session(training_session)
-      training_session.users << current_user
-    end
-      redirect_to training_session_path(training_session)
+    training_session.users << current_user if !current_user.belongs_to_training_session(training_session)
+    redirect_to training_session_path(training_session)
   end
 
   def create
     @training_session = current_user.training_sessions.build(training_session_params)
-    
+    current_user.training_sessions << @training_session
 
-    respond_to do |format|
+    
       if @training_session.save
-        format.html { redirect_to @training_session, notice: 'Training session was successfully created.' }
-        format.json { render :show, status: :created, location: @training_session }
         Text.new.send_text(current_user.mobile_number, "You have successfully created a training session for #{@training_session.name} on #{@training_session.start_time.strftime("%d of %B")} at #{@training_session.start_time.strftime("%H%M")}") if current_user.has_mobile_number?
         completed_email(current_user, "HELL YEAH! You completed #{@training_session.name} on #{@training_session.start_time.strftime("%d of %B")} at #{@training_session.start_time.strftime("%H%M")}")
+        flash[:notice] = "You successfully created a training session"
+        redirect_to user_training_session_path(current_user, @training_session)
       else
         format.html { render :new }
         format.json { render json: @training_session.errors, status: :unprocessable_entity }
       end
-    end
+    
   end
 
   def update
@@ -69,7 +68,7 @@ class TrainingSessionsController < ApplicationController
     end
 
     def training_session_params
-      params.require(:training_session).permit(:name, :start_time, :mobile_number, :training_completed)
+      params.require(:training_session).permit(:name, :start_time, :training_completed)
     end
 
     def completed_email(current_user, body)

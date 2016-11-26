@@ -81,7 +81,7 @@
       <div class="container container-fluid">
         <% if current_user %>
           <button id="signed-in-user" type ="button" class="btn btn-default btn-xs pull-right">
-            <% if !current_user.image.nil? %>
+            <% if current_user.has_image_file? %>
               <%= link_to image_tag(current_user.image.url(:small), class: "signed_in_image"), current_user.image.url %>
             <% else %>
               <span class = "glyphicon glyphicon-user"></span>
@@ -90,7 +90,7 @@
             <ul class="dropdown-menu">
               <li class="dropdown"><a href='<%= "#{user_path(current_user)}" %>'>View Profile</a></li>
               <li class="dropdown"><a href='<%= "users/password/edit" %>'>Edit Password</a></li>
-              <li class="dropdown"><a href='<%= "/users/edit" %>'> Edit Profile</a></li>
+              <li class="dropdown"><a href='<%= "#{edit_user_registration_path(@user)}" %>'> Edit Profile</a></li>
             </ul>
           </button>
          <% end %>

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   resources :users do
   	resources :friendships
+    resources :training_sessions
   end
 
   resources :calendars

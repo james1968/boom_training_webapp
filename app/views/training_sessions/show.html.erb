@@ -26,7 +26,7 @@
         <h6>Currently Attending</h6>
         <ul>
           <% @training_session.users.each do |training_session_user| %>
-            <li><%= training_session_user.email %></li>
+            <li><%= link_to "#{training_session_user.email}", user_path(training_session_user) %></li>
           <% end %>
         </ul>
       <% end %>
