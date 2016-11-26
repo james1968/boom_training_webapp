@@ -1,19 +1,29 @@
-<div class="container-fluid">
+
   <div class="row">
     <div class="col-lg-4"></div>
     <div class="col-lg-4">
 
       <p id="notice"><%= notice %></p>
 
-      <p>
-        <strong>Group Name:</strong>
-        <%= @group.name %>
-      </p>
+      <ul>
+        <li>
+          <strong>Group Name:</strong>
+          <%= @group.name %>
+        </li>
 
-      <p>
-        <strong>Description:</strong>
-        <%= @group.description %>
-      </p>
+        <li>
+          <strong>Description:</strong>
+          <%= @group.description %>
+        </li>
+
+        <li>
+          <strong>Memebers:</strong>
+          <% @group.users.each do |group_user| %>
+            <p><%= group_user.email %></p>
+          <% end %>
+
+        </li>
+      </ul>
 
     
 
@@ -25,4 +35,4 @@
     </div>
     <div class="col-lg-4"></div>
   </div>
-</div>
+

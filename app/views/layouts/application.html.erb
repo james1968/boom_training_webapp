@@ -44,7 +44,7 @@
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Groups <b class="caret"></b></a>
                   <ul class="dropdown-menu">
-                    <li><a href="/groups">Your Groups</a></li>
+                    <li><a href="/groups">All Groups</a></li>
                     <li><a href="/groups/new">Create New Group</a></li>
                   </ul>
                 </li>
@@ -78,7 +78,7 @@
         </div>
       </nav>
 
-      <div class="container">
+      <div class="container container-fluid">
         <% if current_user %>
           <button id="signed-in-user" type ="button" class="btn btn-default btn-xs pull-right">
             <% if !current_user.image.nil? %>

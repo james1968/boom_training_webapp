@@ -19,8 +19,14 @@ class GroupsController < ApplicationController
   end
 
   def join_group
-    @group = Group.find(params[:id])
-    render 'join'
+    !current_user.belongs_to_group(Group.find(params[:id])) ?  membership = Membership.new(group_id: params[:id], user_id: current_user.id) : membership = Membership.new
+    
+    if membership.save
+      flash[:notice] = "Successfully joined the group"
+    else
+      flash[:notice] = "Failed to join group"
+    end
+    redirect_to groups_path
   end
 
   def join_group_update
@@ -39,6 +45,7 @@ class GroupsController < ApplicationController
 
   def create
     @group = Group.new(group_params)
+    @group.users << current_user
 
     respond_to do |format|
       if @group.save

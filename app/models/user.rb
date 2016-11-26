@@ -12,7 +12,11 @@
 	has_many :friendship_twos, :class_name => 'Friendship', :foreign_key => :first_user_id
 	has_many :friend_twos, through: :friendship_twos, source: :second_user
 
-  has_many :groups
+
+  has_many :memberships
+  has_many :groups, :through => :memberships, :source => :group
+
+
   has_many :training_sessions
 
   has_attached_file :image, styles: { small: "64x64", med: "100x100", large: "400x400" }
@@ -27,5 +31,9 @@
 
   def friends
   	friend_ones + friend_twos
+  end
+
+  def belongs_to_group(group)
+    group.users.include?(self)
   end
 end
