@@ -21,8 +21,8 @@ class TrainingSessionsController < ApplicationController
     training_session = TrainingSession.find(params[:id])
     if !current_user.belongs_to_training_session(training_session)
       training_session.users << current_user
-      redirect_to training_session_path(training_session)
     end
+      redirect_to training_session_path(training_session)
   end
 
   def create
