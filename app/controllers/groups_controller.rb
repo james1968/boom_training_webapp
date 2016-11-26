@@ -20,7 +20,7 @@ class GroupsController < ApplicationController
 
   def join_group
     !current_user.belongs_to_group(Group.find(params[:id])) ?  membership = Membership.new(group_id: params[:id], user_id: current_user.id) : membership = Membership.new
-    
+
     if membership.save
       flash[:notice] = "Successfully joined the group"
     else
