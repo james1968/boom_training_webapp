@@ -5,24 +5,30 @@
       <div class="col-lg-4"></div>
     </div>
   </div>
-  <%= month_calendar events: @training_sessions do |date, training_sessions| %>
 
-    <%= content_tag :div, class: "calendar-day", data: {date: date} do %>
-     <%= date %>
-    <% end %>
-    <% if current_user %>
-      <% training_sessions.each do |training| %>
-        <% if training.training_completed == "Hells YEAH" %>
-          <div>
-            <%= link_to "#{training.name}", training %>
-          </div>
-          <%= image_tag('green-tick.png', class: "completed-training-session" ) %>
-        <% else %>
-          <div>
-            <%= link_to "#{training.name}", training %>
-          </div>
-          <%= image_tag('red-cross.png', class: "failed-training-session" ) %>
+  <% if current_user %>
+    <%= month_calendar events: @training_sessions  do |date, training_sessions| %>
+
+      <%= content_tag :div, class: "calendar-day", data: {date: date} do %>
+       <%= date %>
+      <% end %>
+      <% if current_user %>
+        <% training_sessions.each do |training| %>
+          <% if training.training_completed == "Hells YEAH" %>
+            <div>
+              <%= link_to "#{training.name}", training %>
+            </div>
+            <%= image_tag('green-tick.png', class: "completed-training-session" ) %>
+          <% else %>
+            <div>
+              <%= link_to "#{training.name}", training %>
+            </div>
+            <%= image_tag('red-cross.png', class: "failed-training-session" ) %>
+          <% end %>
         <% end %>
       <% end %>
     <% end %>
+  <% else %>
+    <h1>Welcome to Boom Training</h1>
+    <h2>Please Sign in or Sign up</h2>
   <% end %>

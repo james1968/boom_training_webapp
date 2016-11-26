@@ -17,8 +17,17 @@ class TrainingSessionsController < ApplicationController
   def edit
   end
 
+  def join_session
+    training_session = TrainingSession.find(params[:id])
+    if !current_user.belongs_to_training_session(training_session)
+      training_session.users << current_user
+      redirect_to training_session_path(training_session)
+    end
+  end
+
   def create
     @training_session = current_user.training_sessions.build(training_session_params)
+    
 
     respond_to do |format|
       if @training_session.save

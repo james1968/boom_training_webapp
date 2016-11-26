@@ -44,11 +44,10 @@ feature "User can sign in and out" do
     expect(page).to have_content 'Group was successfully created'
     click_link 'Sign Out'
     sign_up_two
-    click_link('Your Groups')
+    click_link('All Groups')
     click_link('Show')
     click_link('Join')
-    fill_in('Members', with: 'riddler@hotmail.com')
-    expect(page).to have_content('You\'ve joined Fight Club')
+    expect(page).to have_content('Successfully joined the group')
     end
   end
 

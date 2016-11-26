@@ -17,7 +17,8 @@
   has_many :groups, :through => :memberships, :source => :group
 
 
-  has_many :training_sessions
+  has_many :training_session_joins
+  has_many :training_sessions, :through => :training_session_joins, :source => :training_session
 
   has_attached_file :image, styles: { small: "64x64", med: "100x100", large: "400x400" }
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
@@ -36,4 +37,8 @@
   def belongs_to_group(group)
     group.users.include?(self)
   end
+
+  def belongs_to_training_session(session)
+    session.users.include?(self)
+  end 
 end

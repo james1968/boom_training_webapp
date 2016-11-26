@@ -22,8 +22,18 @@
         <%= @training_session.training_completed %>
       </h4>
 
+      <% if @training_session.users.count > 0 %>
+        <h6>Currently Attending</h6>
+        <ul>
+          <% @training_session.users.each do |training_session_user| %>
+            <li><%= training_session_user.email %></li>
+          <% end %>
+        </ul>
+      <% end %>
+
       <p><%= link_to 'Edit', edit_training_session_path(@training_session), class: "btn btn-secondary"  %></p>
       <p><%= link_to "Review Session", new_training_session_review_path(@training_session), class: "btn btn-secondary" %></p>
+      <p><%= link_to 'Join Session', join_session_path %> </p>
 
     </div>
     <div class="col-lg-4"></div>

@@ -25,5 +25,5 @@ Rails.application.routes.draw do
   get 'groups/add_member' => 'groups#add_member'
   post '/groups/:id/join_group' => 'groups#join_group_update', as: 'join_update'
 
-
+  get '/training_sessions/:id/join_session' => 'training_sessions#join_session', as: 'join_session'
 end
