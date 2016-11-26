@@ -1,0 +1,7 @@
+<%= form_for [@group, @member] do |f| %>
+  <%= f.label :user_email %>
+  <%= f.email_field :user_email %>
+  <%= f.label :user_name %>
+  <%= f.text_field :user_name %>
+  <%= f.submit 'Join Group' %>
+<% end %>

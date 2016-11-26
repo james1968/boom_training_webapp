@@ -46,7 +46,7 @@ feature "User can sign in and out" do
     sign_up_two
     click_link('Your Groups')
     click_link('Show')
-    click_link('Join')
+    click_link('Join Group')
     fill_in('User email', with: 'riddler@hotmail.com')
     click_button('Join')
     expect(page).to have_content('User successfully added to group')

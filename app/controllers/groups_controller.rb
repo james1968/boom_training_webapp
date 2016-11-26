@@ -9,6 +9,7 @@ class GroupsController < ApplicationController
 
   def show
     @group = set_group
+    @members = @group.members
   end
 
   def new
@@ -78,6 +79,6 @@ class GroupsController < ApplicationController
     end
 
     def group_params
-      params.require(:group).permit(:name, :description, :members)
+      params.require(:group).permit(:name, :description)
     end
 end

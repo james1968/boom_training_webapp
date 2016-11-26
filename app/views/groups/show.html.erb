@@ -11,20 +11,22 @@
       </p>
 
       <p>
-        <strong>Description:</strong>
+        <strong>Desription:</strong>
         <%= @group.description %>
       </p>
 
       <p>
-        <strong>Members</strong>
-        <%= @group.user_email %>
+      <strong>Members:</strong>
+      <p>
+      <% @members.each do |member| %>
+      <%= member.user_email %></br>
+      <% end %>
       </p>
-
+      </p>
 
       <%= link_to 'Edit', edit_group_path(@group) %>
 
-      <%= link_to 'Join', join_group_path(@group) %>
-
+      <%= link_to 'Join Group', new_group_member_path(@group) %>
 
     </div>
     <div class="col-lg-4"></div>
