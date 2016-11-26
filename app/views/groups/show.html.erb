@@ -17,14 +17,13 @@
         </li>
 
         <li>
-          <strong>Memebers:</strong>
+          <strong>Members:</strong>
           <% @group.users.each do |group_user| %>
             <p><%= group_user.email %></p>
           <% end %>
 
         </li>
       </ul>
-
 
       <%= link_to 'Edit', edit_group_path(@group) %>
 
@@ -34,4 +33,3 @@
     </div>
     <div class="col-lg-4"></div>
   </div>
-
