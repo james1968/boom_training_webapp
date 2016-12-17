@@ -9,7 +9,7 @@ feature 'log training sessions' do
     click_link "Training Sessions"
     click_link 'New Training Session'
     click_button 'Create Training Session'
-    expect(page).to have_content ('Training session was successfully created.')
+    expect(page).to have_content ('You successfully created a training session')
   end
 
   scenario 'must be logged in to log a session' do
@@ -29,7 +29,7 @@ feature 'log training sessions' do
     find('#training_session_start_time_4i').find(:option, '14').select_option
     find('#training_session_start_time_5i').find(:option, '30').select_option
     click_button 'Create Training Session'
-    expect(page).to have_content ('Training session was successfully created.')
+    expect(page).to have_content ('You successfully created a training session')
     expect(page).to have_content ('2017-12-01 14:30:00 UTC')
   end
 end
